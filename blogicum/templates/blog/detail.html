@@ -8,19 +8,24 @@
 {% block content %}
   <div class="container py-5">
     <article>
-      <ul>
-        <li>
-          {{ post.location }}
-        </li>
-        <li>
-          {{ post.date }}
-        </li>
-        <li>
-          Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
-        </li>
-      </ul>
+      <table class="table">
+        <tbody>
+        <tr>
+          <td class="col-1">Место</td>
+          <td class="col-11">{{ post.location }}</td>
+        </tr>
+        <tr>
+          <td class="col-1">Дата</td>
+          <td class="col-11">{{ post.location }}</td>
+        </tr>
+        <tr>
+          <td class="col-1">Категория</td>
+          <td class="col-11"><a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a></td>
+        </tr>
+        </tbody>
+      </table>
       <p>
-        {{ post.text | linebreaksbr }}
+        {{ post.text|linebreaksbr }}
       </p>
     </article>
   </div>

@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 posts = [
@@ -51,9 +52,17 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    template_name = 'blog/detail.html'
-    context = {'post': posts[post_id]}
-    return render(request, template_name, context)
+    for post in posts:
+        if post['id'] == post_id:
+            template_name = 'blog/detail.html'
+            context = {'post': post}
+            return render(request, template_name, context)
+
+    return HttpResponse(
+        '<h1>Not Found</h1>'
+        f'<p>Публикации с id {post_id} не существует.</p>',
+        status=404
+    )
 
 
 def category_posts(request, category):
