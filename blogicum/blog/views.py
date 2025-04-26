@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import Http404
 from django.shortcuts import render
 
 posts = [
@@ -58,11 +58,7 @@ def post_detail(request, post_id):
             context = {'post': post}
             return render(request, template_name, context)
 
-    return HttpResponse(
-        '<h1>Not Found</h1>'
-        f'<p>Публикации с id {post_id} не существует.</p>',
-        status=404
-    )
+    raise Http404
 
 
 def category_posts(request, category):

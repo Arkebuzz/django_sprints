@@ -20,7 +20,12 @@
 {% include "includes/header.html" %}
 
 <main>
-  {% block content %}Здесь могла быть ваша реклама...{% endblock content %}
+  {% block content %}
+    <div class="container py-5">
+      <h2>Cтраницы {{ request.path }} не существует</h2>
+      <p>Здесь могла быть ваша реклама...</p>
+    </div>
+  {% endblock content %}
 </main>
 
 {% include "includes/footer.html" %}
