@@ -1,32 +1,16 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block title %}
-  {{ post.location }}. {{ post.date }}
-{% endblock title %}
+  {{ post.title }} | {% if post.location and post.location.is_published %}{{ post.location.name }} |{% endif %}
+  {{ post.pub_date|date:"d E Y" }}
+{% endblock %}
 
 {% block content %}
-  <div class="container py-5">
-    <article>
-      <table class="table">
-        <tbody>
-        <tr>
-          <td class="col-1">Место</td>
-          <td class="col-11">{{ post.location }}</td>
-        </tr>
-        <tr>
-          <td class="col-1">Дата</td>
-          <td class="col-11">{{ post.date }}</td>
-        </tr>
-        <tr>
-          <td class="col-1">Категория</td>
-          <td class="col-11"><a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a></td>
-        </tr>
-        </tbody>
-      </table>
-      <p>
-        {{ post.text|linebreaksbr }}
-      </p>
-    </article>
-  </div>
-{% endblock content %}
+  <article>
+    <p>{{ post.pub_date|date:"d E Y" }} |
+      {% if post.location and post.location.is_published %}{{ post.location.name }}{% else %}ПланетаЗемля{% endif %}<br>
+      <small>От автора @{{ post.author.username }} в категории {% include "includes/category_link.html" %}</small></p>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.text|linebreaksbr }}</p>
+  </article>
+{% endblock %}
