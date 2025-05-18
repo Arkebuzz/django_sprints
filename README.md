@@ -17,6 +17,7 @@
 * Логин: admin
 * Пароль: 12345678
 
+В этой ветке есть некоторые изменения шаблонов яндекса, если нужен вариант максимально приближенный к исходникам яндекса смотри [ветку](https://github.com/Arkebuzz/django_sprints/tree/original).
 <hr>
 
 ![Главная страница](images4readme/main.png) ![Страница категории](images4readme/category.png)
